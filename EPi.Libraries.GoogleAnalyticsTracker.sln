@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPi.Libraries.GoogleAnalyti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPi.Libraries.GoogleAnalyticsTracker.WebApi", "EPi.Libraries.GoogleAnalyticsTracker.WebApi\EPi.Libraries.GoogleAnalyticsTracker.WebApi.csproj", "{E315FB46-C4E5-4BA6-8A9D-7D18C6593193}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{0CC457E8-8A1B-4B42-BA2C-1D27F71BA3FC}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
