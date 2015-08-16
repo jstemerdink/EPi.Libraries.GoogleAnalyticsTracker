@@ -6,8 +6,8 @@
 
 ## Parts
 
-[Core functionality](EPi.Libraries.GoogleAnalyticsTracker.Core/readme.md)
+[Core functionality](EPi.Libraries.GoogleAnalyticsTracker.Core/)
 
-[Mvc4 implementation](EPi.Libraries.GoogleAnalyticsTracker.Mvc4/readme.md)
+[Mvc4 implementation](EPi.Libraries.GoogleAnalyticsTracker.Mvc4/)
 
-[WebApi implementation](EPi.Libraries.GoogleAnalyticsTracker.WebApi/readme.md)
+[WebApi implementation](EPi.Libraries.GoogleAnalyticsTracker.WebApi/)

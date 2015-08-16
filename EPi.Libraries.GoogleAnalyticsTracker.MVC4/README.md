@@ -3,11 +3,3 @@
 [![GitHub version](https://badge.fury.io/gh/jstemerdink%2FEPi.Libraries.GoogleAnalyticsTracker.svg)](http://badge.fury.io/gh/jstemerdink%2FEPi.Libraries.GoogleAnalyticsTracker)
 [![Platform](https://img.shields.io/badge/platform-.NET 4.5-blue.svg?style=flat)](https://msdn.microsoft.com/en-us/library/w0x726c2%28v=vs.110%29.aspx)
 [![Platform](https://img.shields.io/badge/EPiServer-%208.0.0-orange.svg?style=flat)](http://world.episerver.com/cms/)
-
-## Parts
-
-[Core functionality](EPi.Libraries.GoogleAnalyticsTracker.Core/readme.md)
-
-[Mvc4 implementation](EPi.Libraries.GoogleAnalyticsTracker.Mvc4/readme.md)
-
-[WebApi implementation](EPi.Libraries.GoogleAnalyticsTracker.WebApi/readme.md)

@@ -201,6 +201,7 @@
     <None Include="EPi.Libraries.GoogleAnalyticsTracker.WebApi.nuspec" />
     <None Include="EPiServer.Libraries.snk" />
     <None Include="packages.config" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EPi.Libraries.GoogleAnalyticsTracker.Core\EPi.Libraries.GoogleAnalyticsTracker.Core.csproj">
