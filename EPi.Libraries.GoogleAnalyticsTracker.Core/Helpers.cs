@@ -88,8 +88,7 @@ namespace EPi.Libraries.GoogleAnalyticsTracker.Core
             ContentLoader.Service.TryGet(ContentReference.StartPage, out startPage);
 
             PropertyInfo trackingAccountProperty =
-                Enumerable.FirstOrDefault(
-                    startPage.GetType().GetProperties().Where(HasAttribute<GoogleAnalyticsAccountAttribute>));
+                startPage.GetType().GetProperties().Where(HasAttribute<GoogleAnalyticsAccountAttribute>).FirstOrDefault();
 
             if (trackingAccountProperty == null)
             {
