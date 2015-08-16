@@ -85,7 +85,15 @@ namespace EPi.Libraries.GoogleAnalyticsTracker.Core
         public static string GetTrackingAccount()
         {
             PageData startPage;
-            ContentLoader.Service.TryGet(ContentReference.StartPage, out startPage);
+            try
+            {
+                ContentLoader.Service.TryGet(ContentReference.StartPage, out startPage);
+            }
+            catch (Exception exception)
+            {
+                Logger.Error("[GoogleAnalyticsTracker] Contentloader not inlitialized", exception);
+                return string.Empty;
+            }
 
             PropertyInfo trackingAccountProperty =
                 startPage.GetType().GetProperties().Where(HasAttribute<GoogleAnalyticsAccountAttribute>).FirstOrDefault();
