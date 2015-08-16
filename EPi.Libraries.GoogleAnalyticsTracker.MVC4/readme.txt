@@ -1,0 +1,1 @@
+﻿Add a property to your startpage to hold your Google Analytics code, mark it with the [GoogleAnalyticsAccount] attribute.
