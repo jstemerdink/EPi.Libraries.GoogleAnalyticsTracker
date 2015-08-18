@@ -202,7 +202,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="readme.txt" />
+    <None Include="readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\GitVersionTask.3.0.2\Build\GitVersionTask.targets" Condition="Exists('..\packages\GitVersionTask.3.0.2\Build\GitVersionTask.targets')" />
