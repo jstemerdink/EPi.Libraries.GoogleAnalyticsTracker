@@ -22,7 +22,6 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 
 using System;
-using System.Web.Http.Controllers;
 
 using EPi.Libraries.GoogleAnalyticsTracker.Core;
 
@@ -33,7 +32,7 @@ namespace EPi.Libraries.GoogleAnalyticsTracker.WebApi
     /// <summary>
     ///     Class EPiServerActionTrackingAttribute. This class cannot be inherited.
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    [AttributeUsage(AttributeTargets.Method)]
     public sealed class EPiServerActionTrackingAttribute : ActionTrackingAttribute
     {
         /// <summary>
@@ -50,30 +49,16 @@ namespace EPi.Libraries.GoogleAnalyticsTracker.WebApi
         ///     Initializes a new instance of the <see cref="EPiServerActionTrackingAttribute" /> class.
         /// </summary>
         public EPiServerActionTrackingAttribute()
-            : this(Helpers.GetTrackingAccount(), Helpers.GetTrackingDomain(), null, null)
+            : this(null, null, null, null)
         {
         }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="EPiServerActionTrackingAttribute" /> class.
         /// </summary>
-        /// <param name="trackingAccount">The tracking account.</param>
-        /// <param name="trackingDomain">The tracking domain.</param>
-        public EPiServerActionTrackingAttribute(string trackingAccount, string trackingDomain)
-            : this(trackingAccount, trackingDomain, null, null)
+        public EPiServerActionTrackingAttribute(string actionDescription)
+            : this(null, null, actionDescription, null)
         {
-            this.trackingAccount = trackingAccount;
-            this.trackingDomain = trackingDomain;
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="EPiServerActionTrackingAttribute" /> class.
-        /// </summary>
-        /// <param name="trackingAccount">The tracking account.</param>
-        public EPiServerActionTrackingAttribute(string trackingAccount)
-            : this(trackingAccount, null, null, null)
-        {
-            this.trackingAccount = trackingAccount;
         }
 
         /// <summary>
@@ -83,13 +68,16 @@ namespace EPi.Libraries.GoogleAnalyticsTracker.WebApi
         /// <param name="trackingDomain">The tracking domain.</param>
         /// <param name="actionDescription">The action description.</param>
         /// <param name="actionUrl">The action URL.</param>
-        public EPiServerActionTrackingAttribute(
+        private EPiServerActionTrackingAttribute(
             string trackingAccount,
             string trackingDomain,
             string actionDescription,
             string actionUrl)
         {
-            this.trackingAccount = trackingAccount;
+            if (string.IsNullOrEmpty(trackingAccount))
+            {
+                this.trackingAccount = trackingAccount = Helpers.GetTrackingAccount();
+            }
 
             if (string.IsNullOrEmpty(trackingDomain))
             {
@@ -103,54 +91,6 @@ namespace EPi.Libraries.GoogleAnalyticsTracker.WebApi
                 new AspNetWebApiTrackerEnvironment());
             this.ActionDescription = actionDescription;
             this.ActionUrl = actionUrl;
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="EPiServerActionTrackingAttribute" /> class.
-        /// </summary>
-        /// <param name="tracker">The tracker.</param>
-        public EPiServerActionTrackingAttribute(Tracker tracker)
-            : this(tracker, action => true)
-        {
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="EPiServerActionTrackingAttribute" /> class.
-        /// </summary>
-        /// <param name="tracker">The tracker.</param>
-        /// <param name="isTrackableAction">The is trackable action.</param>
-        public EPiServerActionTrackingAttribute(Tracker tracker, Func<HttpActionContext, bool> isTrackableAction)
-        {
-            this.Tracker = tracker;
-            this.IsTrackableAction = isTrackableAction;
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="EPiServerActionTrackingAttribute" /> class.
-        /// </summary>
-        /// <param name="isTrackableAction">The is trackable action.</param>
-        public EPiServerActionTrackingAttribute(Func<HttpActionContext, bool> isTrackableAction)
-            : this(Helpers.GetTrackingAccount(), Helpers.GetTrackingDomain(), isTrackableAction)
-        {
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="EPiServerActionTrackingAttribute" /> class.
-        /// </summary>
-        /// <param name="trackingAccount">The tracking account.</param>
-        /// <param name="trackingDomain">The tracking domain.</param>
-        /// <param name="isTrackableAction">The is trackable action.</param>
-        public EPiServerActionTrackingAttribute(
-            string trackingAccount,
-            string trackingDomain,
-            Func<HttpActionContext, bool> isTrackableAction)
-        {
-            this.Tracker = new Tracker(
-                trackingAccount,
-                trackingDomain,
-                new CookieBasedAnalyticsSession(),
-                new AspNetWebApiTrackerEnvironment());
-            this.IsTrackableAction = isTrackableAction;
         }
 
         /// <summary>
